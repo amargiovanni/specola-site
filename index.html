@@ -3,15 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Specola — Your Daily Intelligence Observatory</title>
-    <meta name="description" content="A native macOS menubar app that fetches 200+ RSS feeds, analyzes them with Claude AI through the lens of your professional profile, and delivers a premium DOCX briefing every morning. No API keys. No cloud. Just signal.">
-    <meta name="keywords" content="macOS, RSS, AI briefing, Claude, DOCX, menubar app, intelligence, news analysis">
-    <meta property="og:title" content="Specola — Your Daily Intelligence Observatory">
-    <meta property="og:description" content="200+ RSS feeds analyzed by Claude AI. One premium DOCX briefing. Every morning, tailored to you.">
-    <meta property="og:type" content="website">
+    <title>Specola — Your Daily Observatory</title>
+    <meta name="description" content="A native macOS menubar app that delivers AI-analyzed RSS briefings as premium reports in DOCX, PDF, or EPUB. Choose your AI: Claude, OpenAI Codex, or a local LLM via LM Studio. HTML portal, Notification Center widget, tailored to your professional profile.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
             --navy: #0d0f1a;
@@ -20,14 +16,12 @@
             --surface: #1a1e33;
             --accent: #e94560;
             --accent-glow: #e9456040;
-            --accent-soft: #e9456015;
-            --accent-warm: #ff6b6b;
+            --accent-soft: #e9456020;
             --text: #c8cad8;
             --text-bright: #ecedf5;
             --text-dim: #6b6f8a;
             --border: #2a2e48;
             --link: #6ea8fe;
-            --success: #34d399;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -113,7 +107,7 @@
 
         .nav-cta {
             background: var(--accent) !important;
-            color: white !important;
+            color: var(--navy) !important;
             padding: 0.5rem 1.25rem;
             border-radius: 6px;
             font-weight: 500 !important;
@@ -123,26 +117,6 @@
         .nav-cta:hover {
             transform: translateY(-1px);
             box-shadow: 0 4px 20px var(--accent-glow);
-        }
-
-        /* Mobile hamburger */
-        .nav-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 4px;
-        }
-
-        .nav-toggle span {
-            display: block;
-            width: 22px;
-            height: 2px;
-            background: var(--text);
-            border-radius: 2px;
-            transition: all 0.3s;
         }
 
         /* ═══ HERO ═══ */
@@ -190,6 +164,7 @@
             50% { opacity: 0.7; transform: scale(1.1); }
         }
 
+        /* Grid lines */
         .hero-grid {
             position: absolute;
             inset: 0;
@@ -204,7 +179,7 @@
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 860px;
+            max-width: 820px;
             text-align: center;
         }
 
@@ -250,22 +225,12 @@
         .hero-subtitle {
             font-size: 1.2rem;
             color: var(--text);
-            max-width: 600px;
-            margin: 0 auto 1.5rem;
+            max-width: 560px;
+            margin: 0 auto 3rem;
             line-height: 1.8;
             font-weight: 300;
             opacity: 0;
             animation: fade-up 0.8s ease forwards 0.6s;
-        }
-
-        .hero-detail {
-            font-size: 0.9rem;
-            color: var(--text-dim);
-            max-width: 520px;
-            margin: 0 auto 3rem;
-            line-height: 1.7;
-            opacity: 0;
-            animation: fade-up 0.8s ease forwards 0.7s;
         }
 
         .hero-actions {
@@ -324,45 +289,9 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ═══ STATS BANNER ═══ */
-        .stats {
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            background: var(--navy-mid);
-            padding: 3rem 2rem;
-        }
-
-        .stats-inner {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-        }
-
-        .stat {
-            text-align: center;
-            padding: 0.5rem;
-        }
-
-        .stat-value {
-            font-family: 'Instrument Serif', serif;
-            font-size: 2.5rem;
-            color: var(--accent);
-            line-height: 1;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
-            color: var(--text-dim);
-            letter-spacing: 0.06em;
-            line-height: 1.5;
-        }
-
         /* ═══ FLOW SECTION ═══ */
         .flow {
-            padding: 7rem 2rem;
+            padding: 6rem 2rem;
             position: relative;
         }
 
@@ -392,7 +321,7 @@
         .section-desc {
             color: var(--text-dim);
             font-size: 1.05rem;
-            max-width: 560px;
+            max-width: 520px;
             line-height: 1.8;
             margin-bottom: 4rem;
             font-weight: 300;
@@ -440,28 +369,14 @@
             color: var(--text-dim);
         }
 
-        .flow-step .step-detail {
-            margin-top: 1.25rem;
-            padding-top: 1.25rem;
-            border-top: 1px solid var(--border);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.72rem;
-            color: var(--text-dim);
-            line-height: 1.8;
-        }
-
-        .flow-step .step-detail span {
-            color: var(--accent);
-        }
-
         /* ═══ BRIEFING PREVIEW ═══ */
         .preview {
-            padding: 7rem 2rem 8rem;
+            padding: 6rem 2rem 8rem;
             position: relative;
         }
 
         .preview-inner {
-            max-width: 1100px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
@@ -469,7 +384,7 @@
             display: grid;
             grid-template-columns: 1fr 1.3fr;
             gap: 4rem;
-            align-items: start;
+            align-items: center;
         }
 
         .preview-text .section-desc { margin-bottom: 2rem; }
@@ -477,7 +392,7 @@
         .briefing-sections {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.75rem;
         }
 
         .briefing-section {
@@ -609,7 +524,7 @@
 
         /* ═══ FEATURES ═══ */
         .features {
-            padding: 7rem 2rem;
+            padding: 6rem 2rem;
             background: var(--navy-mid);
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
@@ -622,7 +537,7 @@
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 1px;
             background: var(--border);
             border-radius: 12px;
@@ -639,16 +554,15 @@
         .feature:hover { background: var(--navy-light); }
 
         .feature-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
             background: var(--accent-soft);
-            border: 1px solid #e9456025;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 1.25rem;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .feature h3 {
@@ -664,85 +578,9 @@
             line-height: 1.7;
         }
 
-        /* ═══ PERSONA SECTION ═══ */
-        .persona {
-            padding: 7rem 2rem;
-        }
-
-        .persona-inner {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .persona-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 4rem;
-        }
-
-        .persona-card {
-            background: var(--navy-mid);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2.5rem 2rem;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .persona-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--accent);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .persona-card:hover {
-            border-color: var(--accent-glow);
-            transform: translateY(-4px);
-        }
-
-        .persona-card:hover::before { opacity: 1; }
-
-        .persona-role {
-            font-family: 'Instrument Serif', serif;
-            font-size: 1.3rem;
-            color: var(--text-bright);
-            margin-bottom: 0.75rem;
-        }
-
-        .persona-desc {
-            font-size: 0.88rem;
-            color: var(--text-dim);
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-        }
-
-        .persona-example {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.72rem;
-            color: var(--text-dim);
-            background: var(--navy);
-            border-radius: 6px;
-            padding: 1rem 1.25rem;
-            line-height: 1.8;
-            border: 1px solid var(--border);
-        }
-
-        .persona-example .hl { color: var(--accent); }
-
         /* ═══ ARCHITECTURE ═══ */
         .arch {
-            padding: 7rem 2rem;
-            background: var(--navy-mid);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
+            padding: 6rem 2rem;
         }
 
         .arch-inner {
@@ -750,74 +588,15 @@
             margin: 0 auto;
         }
 
-        .arch-cols {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1px;
-            background: var(--border);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-            margin-top: 3rem;
-        }
-
-        .arch-col {
-            background: var(--navy);
-            padding: 2.5rem;
-        }
-
-        .arch-col-title {
-            font-family: 'Instrument Serif', serif;
-            font-size: 1.3rem;
-            color: var(--text-bright);
-            margin-bottom: 0.5rem;
-        }
-
-        .arch-col-sub {
-            font-size: 0.8rem;
-            color: var(--accent);
-            font-family: 'JetBrains Mono', monospace;
-            margin-bottom: 1.5rem;
-            letter-spacing: 0.04em;
-        }
-
-        .arch-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-        }
-
-        .arch-item-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--accent);
-            margin-top: 0.6rem;
-            flex-shrink: 0;
-            opacity: 0.6;
-        }
-
-        .arch-item-text {
-            font-size: 0.88rem;
-            color: var(--text-dim);
-            line-height: 1.6;
-        }
-
-        .arch-item-text strong {
-            color: var(--text);
-            font-weight: 500;
-        }
-
         .arch-diagram {
-            margin-top: 1.5rem;
+            margin-top: 3rem;
             background: var(--navy-mid);
             border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 2.5rem 3rem;
+            padding: 3rem;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.78rem;
-            line-height: 2;
+            font-size: 0.8rem;
+            line-height: 1.9;
             color: var(--text-dim);
             overflow-x: auto;
             white-space: pre;
@@ -827,73 +606,9 @@
         .arch-diagram .bl { color: var(--link); }
         .arch-diagram .wh { color: var(--text-bright); }
 
-        .arch-storage {
-            margin-top: 1.5rem;
-            background: var(--navy);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2rem 2.5rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.78rem;
-            line-height: 2;
-            color: var(--text-dim);
-            white-space: pre;
-        }
-
-        .arch-storage .hl { color: var(--accent); }
-        .arch-storage .bl { color: var(--link); }
-
-        /* ═══ REQUIREMENTS ═══ */
-        .requirements {
-            padding: 5rem 2rem;
-        }
-
-        .requirements-inner {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .req-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .req-card {
-            background: var(--navy-mid);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 1.75rem;
-            text-align: center;
-            transition: border-color 0.3s;
-        }
-
-        .req-card:hover {
-            border-color: var(--accent-glow);
-        }
-
-        .req-icon {
-            font-size: 1.5rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .req-name {
-            font-size: 0.95rem;
-            color: var(--text-bright);
-            font-weight: 500;
-            margin-bottom: 0.35rem;
-        }
-
-        .req-detail {
-            font-size: 0.78rem;
-            color: var(--text-dim);
-            line-height: 1.5;
-        }
-
         /* ═══ INSTALL ═══ */
         .install {
-            padding: 7rem 2rem;
+            padding: 6rem 2rem;
             background: var(--navy-mid);
             border-top: 1px solid var(--border);
         }
@@ -916,7 +631,7 @@
             line-height: 2;
             color: var(--text);
             overflow-x: auto;
-            white-space: pre;
+            white-space: pre-wrap;
         }
 
         .install-code .comment { color: var(--text-dim); }
@@ -924,176 +639,27 @@
         .install-code .flag { color: var(--accent); }
 
         .install-note {
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             color: var(--text-dim);
             line-height: 1.8;
-            max-width: 520px;
+            max-width: 480px;
             margin: 0 auto;
-        }
-
-        .install-steps {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin: 3rem 0;
-            text-align: left;
-        }
-
-        .install-step {
-            background: var(--navy);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 1.75rem;
-        }
-
-        .install-step-num {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.65rem;
-            color: var(--accent);
-            letter-spacing: 0.1em;
-            margin-bottom: 0.75rem;
-            opacity: 0.7;
-        }
-
-        .install-step h4 {
-            font-size: 0.95rem;
-            color: var(--text-bright);
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-
-        .install-step p {
-            font-size: 0.82rem;
-            color: var(--text-dim);
-            line-height: 1.6;
-        }
-
-        /* ═══ FAQ ═══ */
-        .faq {
-            padding: 7rem 2rem;
-        }
-
-        .faq-inner {
-            max-width: 740px;
-            margin: 0 auto;
-        }
-
-        .faq-list {
-            margin-top: 3.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-        }
-
-        .faq-item {
-            border-bottom: 1px solid var(--border);
-            overflow: hidden;
-        }
-
-        .faq-item:first-child {
-            border-top: 1px solid var(--border);
-        }
-
-        .faq-question {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 0;
-            background: none;
-            border: none;
-            cursor: pointer;
-            text-align: left;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 1rem;
-            color: var(--text-bright);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .faq-question:hover { color: var(--accent); }
-
-        .faq-icon {
-            font-size: 1.2rem;
-            color: var(--accent);
-            transition: transform 0.3s;
-            flex-shrink: 0;
-            margin-left: 1rem;
-        }
-
-        .faq-item.open .faq-icon {
-            transform: rotate(45deg);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.4s ease;
-        }
-
-        .faq-item.open .faq-answer {
-            max-height: 300px;
-        }
-
-        .faq-answer p {
-            padding-bottom: 1.5rem;
-            font-size: 0.9rem;
-            color: var(--text-dim);
-            line-height: 1.8;
-        }
-
-        .faq-answer code {
-            color: var(--accent);
-            background: var(--accent-soft);
-            padding: 0.1rem 0.4rem;
-            border-radius: 3px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.82rem;
         }
 
         /* ═══ FOOTER ═══ */
         footer {
-            padding: 4rem 2rem 3rem;
+            padding: 3rem 2rem;
             border-top: 1px solid var(--border);
+            text-align: center;
         }
 
-        .footer-inner {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-brand {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .footer-brand .nav-diamond {
-            width: 8px;
-            height: 8px;
-        }
-
-        .footer-brand span {
-            font-family: 'Instrument Serif', serif;
-            font-size: 1.1rem;
-            color: var(--text-dim);
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        footer p, footer a {
+        footer p {
             font-size: 0.8rem;
             color: var(--text-dim);
         }
 
         footer a {
+            color: var(--text);
             text-decoration: none;
             transition: color 0.3s;
         }
@@ -1103,39 +669,11 @@
         /* ═══ RESPONSIVE ═══ */
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .nav-toggle { display: flex; }
-
-            /* Mobile menu */
-            .nav-links.mobile-open {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--navy-mid);
-                border-bottom: 1px solid var(--border);
-                padding: 1.5rem 2rem;
-                gap: 1.25rem;
-            }
-
             .flow-steps { grid-template-columns: 1fr; }
             .preview-grid { grid-template-columns: 1fr; }
             .features-grid { grid-template-columns: 1fr; }
-            .persona-grid { grid-template-columns: 1fr; }
-            .arch-cols { grid-template-columns: 1fr; }
-            .req-grid { grid-template-columns: repeat(2, 1fr); }
-            .install-steps { grid-template-columns: 1fr; }
-            .stats-inner { grid-template-columns: repeat(2, 1fr); }
             .docx-mockup { transform: none; }
             .hero { padding: 7rem 1.5rem 3rem; }
-            .footer-inner { flex-direction: column; gap: 1.5rem; text-align: center; }
-            .footer-links { flex-wrap: wrap; justify-content: center; }
-        }
-
-        @media (max-width: 480px) {
-            .req-grid { grid-template-columns: 1fr; }
-            .stats-inner { grid-template-columns: 1fr; gap: 1.5rem; }
         }
 
         /* ═══ SCROLL REVEAL ═══ */
@@ -1149,47 +687,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Staggered children */
-        .reveal-stagger > * {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .reveal-stagger.visible > *:nth-child(1) { transition-delay: 0.05s; opacity: 1; transform: translateY(0); }
-        .reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
-        .reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
-        .reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
-        .reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.25s; opacity: 1; transform: translateY(0); }
-        .reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
-        .reveal-stagger.visible > *:nth-child(7) { transition-delay: 0.35s; opacity: 1; transform: translateY(0); }
-        .reveal-stagger.visible > *:nth-child(8) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
-        .reveal-stagger.visible > *:nth-child(9) { transition-delay: 0.45s; opacity: 1; transform: translateY(0); }
-
-        /* ═══ DIVIDER ═══ */
-        .section-divider {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .section-divider::before,
-        .section-divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--border);
-        }
-
-        .section-divider .nav-diamond {
-            width: 6px;
-            height: 6px;
-            opacity: 0.4;
-        }
     </style>
 </head>
 <body>
@@ -1200,20 +697,13 @@
         <div class="nav-diamond"></div>
         <span class="nav-title">Specola</span>
     </a>
-    <div class="nav-links" id="navLinks">
+    <div class="nav-links">
         <a href="#how">How it works</a>
         <a href="#briefing">The briefing</a>
         <a href="#features">Features</a>
-        <a href="#who">Who it's for</a>
         <a href="#architecture">Architecture</a>
-        <a href="#install">Install</a>
         <a href="https://github.com/amargiovanni/specola" class="nav-cta">GitHub</a>
     </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
 </nav>
 
 <!-- HERO -->
@@ -1222,15 +712,10 @@
         <div class="hero-grid"></div>
     </div>
     <div class="hero-content">
-        <div class="hero-eyebrow">Native macOS Menubar App</div>
+        <div class="hero-eyebrow">macOS Menubar App</div>
         <h1>Your daily<br>observatory on<br>what <em>matters</em></h1>
         <p class="hero-subtitle">
-            Specola fetches your RSS feeds, has Claude analyze them through the lens
-            of your professional profile, and delivers a premium DOCX briefing every morning.
-        </p>
-        <p class="hero-detail">
-            No API keys to manage. No cloud services to configure.
-            Everything runs locally on your Mac via the Claude Code CLI.
+            Specola fetches your RSS feeds, has your AI of choice &mdash; Claude, OpenAI, or a local LLM &mdash; analyze them through the lens of your professional profile, and delivers a polished briefing in DOCX, PDF, or EPUB &mdash; plus an always-on HTML portal and a Notification Center widget.
         </p>
         <div class="hero-actions">
             <a href="https://github.com/amargiovanni/specola" class="btn-primary">
@@ -1242,79 +727,29 @@
     </div>
 </section>
 
-<!-- STATS -->
-<section class="stats">
-    <div class="stats-inner reveal reveal-stagger">
-        <div class="stat">
-            <div class="stat-value">200+</div>
-            <div class="stat-label">RSS sources fetched<br>concurrently</div>
-        </div>
-        <div class="stat">
-            <div class="stat-value">20</div>
-            <div class="stat-label">parallel threads<br>for feed harvesting</div>
-        </div>
-        <div class="stat">
-            <div class="stat-value">.docx</div>
-            <div class="stat-label">professional output<br>ready for Word &amp; Pages</div>
-        </div>
-        <div class="stat">
-            <div class="stat-value">2</div>
-            <div class="stat-label">languages supported<br>Italian &amp; English</div>
-        </div>
-    </div>
-</section>
-
 <!-- HOW IT WORKS -->
 <section class="flow" id="how">
     <div class="flow-inner">
         <div class="reveal">
             <div class="section-label">The process</div>
             <h2 class="section-title">Three steps, zero effort</h2>
-            <p class="section-desc">
-                Configure once, receive daily. Specola runs silently in your menubar
-                and handles everything &mdash; from fetching to analysis to formatting.
-            </p>
+            <p class="section-desc">Configure once, receive daily. Specola runs silently in your menubar and handles everything.</p>
         </div>
         <div class="flow-steps reveal">
             <div class="flow-step">
                 <div class="flow-step-num">01 &mdash; FETCH</div>
                 <h3>Concurrent RSS harvest</h3>
-                <p>
-                    Specola parses your OPML file and fetches all feeds in parallel
-                    using a 20-thread pool. Failed feeds are skipped gracefully &mdash;
-                    one broken source never blocks the rest.
-                </p>
-                <div class="step-detail">
-                    <span>feedparser</span> handles every RSS/Atom variant.<br>
-                    Configurable time window: <span>6&ndash;72h</span>.
-                </div>
+                <p>Specola parses your OPML file and fetches all feeds in parallel with 20 threads. Failed feeds are skipped gracefully &mdash; one broken source never blocks the rest.</p>
             </div>
             <div class="flow-step">
                 <div class="flow-step-num">02 &mdash; ANALYZE</div>
-                <h3>Claude reads everything</h3>
-                <p>
-                    The full digest is piped to the Claude Code CLI together with your professional
-                    profile. Claude prioritizes, connects dots, and writes analytical
-                    paragraphs &mdash; not one-line summaries.
-                </p>
-                <div class="step-detail">
-                    Runs via <span>subprocess</span> with 300s timeout.<br>
-                    If Claude is unavailable, raw content is<br>
-                    still delivered with a warning banner.
-                </div>
+                <h3>Your AI reads everything</h3>
+                <p>The full digest is sent to your chosen LLM &mdash; Claude Code CLI, OpenAI Codex CLI, or a local model via LM Studio. It prioritizes, connects dots, and writes analytical paragraphs &mdash; not one-line summaries.</p>
             </div>
             <div class="flow-step">
                 <div class="flow-step-num">03 &mdash; DELIVER</div>
-                <h3>Premium DOCX report</h3>
-                <p>
-                    The analysis is rendered into a professionally typeset document
-                    with branded headers, accent colors, clickable source links,
-                    and clear visual hierarchy.
-                </p>
-                <div class="step-detail">
-                    <span>python-docx</span> with Calibri, 1.3 line-height.<br>
-                    Saved to <span>~/Documents/Specola/</span>.
-                </div>
+                <h3>Your format, your way</h3>
+                <p>Choose DOCX, PDF, or EPUB &mdash; Specola renders a professionally typeset report with clickable links, branded headers, and clear hierarchy. An HTML version is always generated for the browsable portal archive.</p>
             </div>
         </div>
     </div>
@@ -1326,51 +761,42 @@
         <div class="preview-grid">
             <div class="preview-text reveal">
                 <div class="section-label">The output</div>
-                <h2 class="section-title">Not a summary.<br>An analysis.</h2>
-                <p class="section-desc">
-                    Each briefing is a multi-page document with deep analysis,
-                    source links, and actionable insights &mdash; all tailored
-                    to your role, your stack, and your current projects.
-                </p>
+                <h2 class="section-title">Not a summary.<br>An intelligence brief.</h2>
+                <p class="section-desc">Each Specola is a multi-page briefing with deep analysis, source links, and actionable insights &mdash; delivered in your chosen format and archived in a browsable HTML portal.</p>
                 <div class="briefing-sections">
                     <div class="briefing-section">
                         <div class="briefing-dot"></div>
                         <div>
                             <strong>Da sapere oggi</strong>
-                            <span>5&ndash;7 key developments with context, implications,
-                            and direct links to original sources</span>
+                            <span>5-7 key developments with context, implications, and direct links to sources</span>
                         </div>
                     </div>
                     <div class="briefing-section">
                         <div class="briefing-dot"></div>
                         <div>
                             <strong>Richiede attenzione</strong>
-                            <span>Actionable items: what happened, why it matters
-                            for your specific context, and what to do this week</span>
+                            <span>Actionable items: what happened, why it matters for you, what to do this week</span>
                         </div>
                     </div>
                     <div class="briefing-section">
                         <div class="briefing-dot"></div>
                         <div>
                             <strong>Per area tematica</strong>
-                            <span>3&ndash;4 sentence analytical paragraphs per topic,
-                            connecting news to broader industry trends and patterns</span>
+                            <span>3-4 sentence analytical paragraphs per item, connecting news to broader trends</span>
                         </div>
                     </div>
                     <div class="briefing-section">
                         <div class="briefing-dot"></div>
                         <div>
                             <strong>Da leggere con calma</strong>
-                            <span>Curated long reads worth your time, each with
-                            a specific reason why they're relevant to you</span>
+                            <span>Long reads worth your time, with a reason why for each</span>
                         </div>
                     </div>
                     <div class="briefing-section">
                         <div class="briefing-dot"></div>
                         <div>
                             <strong>Spunti</strong>
-                            <span>3&ndash;5 concrete ideas for posts, reflections, or strategic
-                            actions inspired by the day's news</span>
+                            <span>Concrete ideas for posts, reflections, or actions inspired by the day's news</span>
                         </div>
                     </div>
                 </div>
@@ -1379,44 +805,15 @@
                 <div class="docx-mockup">
                     <div class="docx-header">
                         <span><span class="diamond"></span> SPECOLA</span>
-                        <span>2026-04-06</span>
+                        <span>2026-04-05</span>
                     </div>
                     <div class="docx-body">
-                        <h2>Specola &mdash; Briefing del 6 aprile 2026</h2>
-
+                        <h2>Specola &mdash; Briefing del 5 aprile 2026</h2>
                         <h3>Da sapere oggi</h3>
-                        <p>
-                            <strong>L'AI Act entra nella fase esecutiva.</strong>
-                            Da oggi le aziende che operano nell'UE devono conformarsi
-                            ai requisiti di trasparenza per i sistemi ad alto rischio.
-                            Per chi sviluppa SaaS B2B, questo significa audit trail
-                            obbligatori e documentazione tecnica verificabile.
-                            <a href="#">(Il Sole 24 Ore)</a>
-                        </p>
-                        <p>
-                            <strong>GitHub lancia Copilot Workspace in GA.</strong>
-                            L'ambiente di sviluppo AI-first esce dalla beta. Integra
-                            planning, coding e testing in un flusso unico. Rilevante
-                            per team che stanno valutando l'adozione di AI coding tools.
-                            <a href="#">(GitHub Blog)</a>
-                        </p>
-
+                        <p><strong>L'AI Act entra nella fase esecutiva.</strong> Da oggi le aziende che operano nell'UE devono conformarsi ai requisiti di trasparenza per i sistemi ad alto rischio. Per chi sviluppa SaaS B2B, questo significa audit trail obbligatori e documentazione tecnica verificabile. <a href="#">(Il Sole 24 Ore)</a></p>
+                        <p><strong>GitHub lancia Copilot Workspace in GA.</strong> L'ambiente di sviluppo AI-first esce dalla beta. Integra planning, coding e testing in un flusso unico. Rilevante per team che stanno valutando l'adozione di AI coding tools. <a href="#">(GitHub Blog)</a></p>
                         <h3>Richiede attenzione</h3>
-                        <p>
-                            <span class="tag">AZIONE</span>
-                            La scadenza PSD3 per l'adeguamento delle API di pagamento
-                            si avvicina. Se il tuo prodotto gestisce transazioni B2B
-                            nell'eurozona, verifica la compliance entro il 15 aprile.
-                            <a href="#">(EBA)</a>
-                        </p>
-
-                        <h3>Per area tematica</h3>
-                        <p>
-                            <strong>Cloud &amp; Infra.</strong>
-                            AWS ha annunciato il supporto nativo per ARM Graviton4
-                            su EKS, con miglioramenti del 30% in efficienza energetica.
-                            <a href="#">(AWS Blog)</a>
-                        </p>
+                        <p><span class="tag">AZIONE</span> La scadenza PSD3 per l'adeguamento delle API di pagamento si avvicina. Se il tuo prodotto gestisce transazioni B2B nell'eurozona, verifica la compliance entro il 15 aprile. <a href="#">(EBA)</a></p>
                     </div>
                     <div class="docx-fade"></div>
                 </div>
@@ -1430,156 +827,68 @@
     <div class="features-inner">
         <div class="reveal">
             <div class="section-label">Why Specola</div>
-            <h2 class="section-title">Built for professionals<br>who value their time</h2>
-            <p class="section-desc">
-                Not another feed reader. Specola is a personal intelligence analyst
-                that lives in your menubar and works while you sleep.
-            </p>
+            <h2 class="section-title">Built for your workflow</h2>
         </div>
-        <div class="features-grid reveal reveal-stagger">
+        <div class="features-grid reveal">
             <div class="feature">
-                <div class="feature-icon">&#x1f6e1;</div>
-                <h3>No API keys, no cloud</h3>
-                <p>
-                    Runs entirely on your Mac using the Claude Code CLI.
-                    Your feeds, your profile, and your briefings never leave your machine.
-                    Zero billing management, zero vendor lock-in.
-                </p>
+                <div class="feature-icon">&#x1f9e0;</div>
+                <h3>Choose your AI</h3>
+                <p>Use Claude Code CLI, OpenAI Codex CLI, or LM Studio for fully offline analysis with your own local models. All three run locally as CLI tools &mdash; no API keys to manage in Specola. Switch anytime in Settings.</p>
             </div>
             <div class="feature">
                 <div class="feature-icon">&#x1f3af;</div>
                 <h3>Tailored to your profile</h3>
-                <p>
-                    Describe your role, tech stack, interests, and current projects
-                    in a freeform markdown file. Specola filters and prioritizes
-                    everything through your professional lens.
-                </p>
+                <p>Describe your role, stack, interests, and active projects in free-form text. Specola filters, prioritizes, and contextualizes everything through your professional lens.</p>
             </div>
             <div class="feature">
-                <div class="feature-icon">&#x1f517;</div>
-                <h3>Every claim has a source</h3>
-                <p>
-                    Clickable hyperlinks to every original article, directly in the document.
-                    The briefing is a starting point for deeper reading, not a dead end.
-                </p>
+                <div class="feature-icon">&#x1f4d1;</div>
+                <h3>DOCX, PDF, or EPUB</h3>
+                <p>Choose your format in Settings. Premium typeset reports with branded headers, accent colors, clickable source links, and clean visual hierarchy. A document you'd share with your board.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">&#x1f310;</div>
+                <h3>HTML portal archive</h3>
+                <p>Every briefing is also published as a standalone HTML page. A beautiful static index lists all your briefings with preview bullets &mdash; open it in any browser, share it, bookmark it.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">&#x1f514;</div>
+                <h3>Notification Center widget</h3>
+                <p>A native macOS widget shows today's key highlights at a glance, right in your Notification Center. Tap to open the full briefing. Always up to date, zero effort.</p>
             </div>
             <div class="feature">
                 <div class="feature-icon">&#x23f0;</div>
                 <h3>Set and forget scheduling</h3>
-                <p>
-                    Pick your preferred time, toggle auto-generate.
-                    A 60-second internal timer checks conditions silently.
-                    If your Mac is asleep, the briefing runs at wake.
-                    No launchd, no cron &mdash; it just works.
-                </p>
+                <p>Pick your time, enable auto-generate. If your Mac is asleep, the briefing runs at wake. No launchd, no cron &mdash; just a briefing ready when you are.</p>
             </div>
             <div class="feature">
-                <div class="feature-icon">&#x1f4c4;</div>
-                <h3>Premium document output</h3>
-                <p>
-                    Branded headers with diamond accent, colored section borders,
-                    Calibri typography, page numbers, and footer branding.
-                    A document you'd share with your board, not a raw text dump.
-                </p>
+                <div class="feature-icon">&#x1f517;</div>
+                <h3>Every item has a source link</h3>
+                <p>Clickable hyperlinks to every original article in every format. The briefing is a starting point for deeper reading, not a dead end.</p>
             </div>
             <div class="feature">
                 <div class="feature-icon">&#x1f30d;</div>
                 <h3>Italian &amp; English</h3>
-                <p>
-                    Full briefings in either language with localized prompts
-                    and regional context awareness. Same depth, same structure,
-                    same quality. Switch anytime in Settings.
-                </p>
+                <p>Full briefings in either language. Same depth, same structure, same quality. Switch anytime in Settings &mdash; even the portal and widget follow along.</p>
             </div>
             <div class="feature">
-                <div class="feature-icon">&#x1f6e0;</div>
-                <h3>Graceful degradation</h3>
-                <p>
-                    If Claude CLI becomes unavailable, Specola still generates
-                    a DOCX with your raw feed content and a clear warning banner.
-                    You always get a briefing &mdash; analysis is a bonus, not a dependency.
-                </p>
+                <div class="feature-icon">&#x1f3a8;</div>
+                <h3>Three visual themes</h3>
+                <p>Corporate, Minimal, or Dark &mdash; choose a look that fits your style. Applied to HTML, DOCX, PDF, and EPUB. Switch with one click in Settings.</p>
             </div>
             <div class="feature">
-                <div class="feature-icon">&#x1f4e6;</div>
-                <h3>~15 MB native app</h3>
-                <p>
-                    Pure Swift and SwiftUI. No Electron, no web views.
-                    The Python engine is bundled inside the app and auto-deploys
-                    a virtual environment on first launch. Nothing to configure manually.
-                </p>
+                <div class="feature-icon">&#x1f50d;</div>
+                <h3>Spotlight search</h3>
+                <p>Every briefing is indexed in macOS Spotlight. Search &ldquo;AI Act&rdquo; or &ldquo;fintech&rdquo; and find the exact Specola that covered it. No manual tagging required.</p>
             </div>
             <div class="feature">
-                <div class="feature-icon">&#x1f4c2;</div>
-                <h3>OPML import from anywhere</h3>
-                <p>
-                    Export your feeds from Feedly, NetNewsWire, Inoreader, or any reader
-                    that supports OPML. Drop the file in Specola's settings and you're done.
-                </p>
+                <div class="feature-icon">&#x1f4ca;</div>
+                <h3>Sparkline in the menubar</h3>
+                <p>A tiny 7-bar chart below the binoculars icon shows article volume from your last 7 briefings. Spot trends at a glance without clicking anything.</p>
             </div>
-        </div>
-    </div>
-</section>
-
-<!-- WHO IS IT FOR -->
-<section class="persona" id="who">
-    <div class="persona-inner">
-        <div class="reveal">
-            <div class="section-label">Who it's for</div>
-            <h2 class="section-title">Built for people who need to<br>know, not just scroll</h2>
-            <p class="section-desc">
-                Specola adapts its analysis to your professional context.
-                Here's how different roles get different value from the same feeds.
-            </p>
-        </div>
-        <div class="persona-grid reveal reveal-stagger">
-            <div class="persona-card">
-                <div class="persona-role">CTO / Tech Lead</div>
-                <p class="persona-desc">
-                    Stay ahead of infrastructure shifts, security advisories,
-                    and tooling changes without reading 50 blogs a day.
-                    Specola highlights what affects your stack and flags
-                    decisions that need your attention this week.
-                </p>
-                <div class="persona-example">
-                    <span class="hl">profile.md</span><br>
-                    "CTO at a B2B SaaS company.<br>
-                    Stack: Laravel, PostgreSQL, AWS.<br>
-                    Focus: compliance (AI Act, GDPR),<br>
-                    DevOps, team productivity."
-                </div>
-            </div>
-            <div class="persona-card">
-                <div class="persona-role">Product Manager</div>
-                <p class="persona-desc">
-                    Get a clear picture of market movements, competitor launches,
-                    and regulatory changes that impact your roadmap.
-                    Specola connects the dots between news items
-                    and surfaces strategic implications.
-                </p>
-                <div class="persona-example">
-                    <span class="hl">profile.md</span><br>
-                    "PM for a fintech product.<br>
-                    Interested in: PSD3, open banking,<br>
-                    AI regulation, UX trends.<br>
-                    Serving: EU B2B market."
-                </div>
-            </div>
-            <div class="persona-card">
-                <div class="persona-role">Consultant / Analyst</div>
-                <p class="persona-desc">
-                    Prepare for client meetings with a morning briefing
-                    that covers their industry, their competitors, and the trends
-                    they're asking about. The "Spunti" section gives you
-                    ready-made talking points.
-                </p>
-                <div class="persona-example">
-                    <span class="hl">profile.md</span><br>
-                    "Strategy consultant, GovTech.<br>
-                    Clients: Italian public agencies.<br>
-                    Topics: digital transformation,<br>
-                    procurement, accessibility."
-                </div>
+            <div class="feature">
+                <div class="feature-icon">&#x1f680;</div>
+                <h3>Guided onboarding</h3>
+                <p>A 3-step wizard on first launch walks you through OPML import and profile setup. You&rsquo;re generating your first briefing in under two minutes.</p>
             </div>
         </div>
     </div>
@@ -1590,107 +899,31 @@
     <div class="arch-inner">
         <div class="reveal">
             <div class="section-label">Under the hood</div>
-            <h2 class="section-title">Two components, one contract</h2>
-            <p class="section-desc">
-                The Swift app handles UI and scheduling.
-                The Python engine does the thinking.
-                They communicate via CLI arguments in and JSON on stdout out &mdash;
-                clean, testable, independently deployable.
-            </p>
+            <h2 class="section-title">Three components, one contract</h2>
+            <p class="section-desc">The Swift app handles UI and scheduling. The Python engine does the analysis and rendering. A WidgetKit extension shows highlights in Notification Center. All connected via JSON and App Groups.</p>
         </div>
+        <div class="arch-diagram reveal"><span class="wh">Swift App</span>                              <span class="wh">Python Engine</span>
 
-        <div class="arch-cols reveal">
-            <div class="arch-col">
-                <div class="arch-col-title">Swift App</div>
-                <div class="arch-col-sub">UI &amp; Scheduling</div>
-                <div class="arch-item">
-                    <div class="arch-item-dot"></div>
-                    <div class="arch-item-text"><strong>MenuBarExtra</strong> &mdash; native macOS menubar integration with dynamic badge icon</div>
-                </div>
-                <div class="arch-item">
-                    <div class="arch-item-dot"></div>
-                    <div class="arch-item-text"><strong>Settings Window</strong> &mdash; four tabs: Feeds, Scheduling, Profile, Advanced</div>
-                </div>
-                <div class="arch-item">
-                    <div class="arch-item-dot"></div>
-                    <div class="arch-item-text"><strong>Scheduler</strong> &mdash; 60-second timer with wake-from-sleep detection via NSWorkspace</div>
-                </div>
-                <div class="arch-item">
-                    <div class="arch-item-dot"></div>
-                    <div class="arch-item-text"><strong>Notifications</strong> &mdash; native macOS alerts when your briefing is ready</div>
-                </div>
-                <div class="arch-item">
-                    <div class="arch-item-dot"></div>
-                    <div class="arch-item-text"><strong>Login Item</strong> &mdash; SMAppService integration for auto-start on boot</div>
-                </div>
-            </div>
-            <div class="arch-col">
-                <div class="arch-col-title">Python Engine</div>
-                <div class="arch-col-sub">Analysis &amp; Generation</div>
-                <div class="arch-item">
-                    <div class="arch-item-dot"></div>
-                    <div class="arch-item-text"><strong>feed_fetcher.py</strong> &mdash; OPML parsing + concurrent RSS fetching with ThreadPoolExecutor</div>
-                </div>
-                <div class="arch-item">
-                    <div class="arch-item-dot"></div>
-                    <div class="arch-item-text"><strong>prompt_builder.py</strong> &mdash; assembles system prompt with user profile and feed digest</div>
-                </div>
-                <div class="arch-item">
-                    <div class="arch-item-dot"></div>
-                    <div class="arch-item-text"><strong>analyzer.py</strong> &mdash; invokes Claude Code CLI via subprocess (300s timeout)</div>
-                </div>
-                <div class="arch-item">
-                    <div class="arch-item-dot"></div>
-                    <div class="arch-item-text"><strong>doc_generator.py</strong> &mdash; DOCX rendering with markdown parsing and branded styling</div>
-                </div>
-                <div class="arch-item">
-                    <div class="arch-item-dot"></div>
-                    <div class="arch-item-text"><strong>Tests</strong> &mdash; 46 pytest tests for engine, 15 XCTest for Swift app</div>
-                </div>
-            </div>
-        </div>
+  MenuBarExtra          <span class="hl">───args──▶</span>      parse_opml()
+  Popover                                 fetch_feeds()  <span class="bl">20 threads</span>
+  Settings              <span class="hl">◀──JSON──</span>      build_prompt()
+  Scheduler  <span class="bl">60s timer</span>                  analyze()  <span class="bl">Claude / OpenAI / LMStudio</span>
+  Notifications                           generate_html()  <span class="bl">always</span>
+                                          generate_docx() <span class="bl">or</span> pdf() <span class="bl">or</span> epub()
+  <span class="wh">Widget Extension</span>                      portal_index()  <span class="bl">static archive</span>
+  WidgetKit  <span class="bl">systemMedium/Large</span>
+  <span class="hl">◀── App Group ──▶</span>  widget_data.json
 
-        <div class="arch-storage reveal">
-<span class="hl">~/Library/Application Support/Specola/</span>
-├── engine/          <span class="bl">Python engine + .venv (auto-created on first launch)</span>
-├── Feeds.opml       <span class="bl">copy of your imported OPML file</span>
-├── profile.md       <span class="bl">your professional profile in freeform markdown</span>
-└── history.json     <span class="bl">metadata for last 30 briefings</span>
+  <span class="hl">~/Library/Application Support/Specola/</span>
+  ├── engine/.venv/     <span class="bl">auto-created on first launch</span>
+  ├── Feeds.opml        <span class="bl">copy of user's OPML</span>
+  ├── profile.md        <span class="bl">professional profile</span>
+  └── history.json      <span class="bl">last 30 briefings</span>
 
-<span class="hl">~/Documents/Specola/</span>
-└── Specola_2026-04-06.docx   <span class="bl">today's briefing</span></div>
-    </div>
-</section>
-
-<!-- REQUIREMENTS -->
-<section class="requirements">
-    <div class="requirements-inner">
-        <div class="reveal">
-            <div class="section-label">Before you start</div>
-            <h2 class="section-title">What you need</h2>
-        </div>
-        <div class="req-grid reveal reveal-stagger">
-            <div class="req-card">
-                <div class="req-icon">&#x1f4bb;</div>
-                <div class="req-name">macOS 14+</div>
-                <div class="req-detail">Sonoma or later</div>
-            </div>
-            <div class="req-card">
-                <div class="req-icon">&#x1f916;</div>
-                <div class="req-name">Claude Code CLI</div>
-                <div class="req-detail">Installed and in your PATH</div>
-            </div>
-            <div class="req-card">
-                <div class="req-icon">&#x1f40d;</div>
-                <div class="req-name">Python 3.9+</div>
-                <div class="req-detail">Pre-installed on most Macs</div>
-            </div>
-            <div class="req-card">
-                <div class="req-icon">&#x1f4e1;</div>
-                <div class="req-name">OPML file</div>
-                <div class="req-detail">From any RSS reader</div>
-            </div>
-        </div>
+  <span class="hl">~/Documents/Specola/</span>
+  ├── index.html        <span class="bl">browsable portal archive</span>
+  ├── Specola_*.html    <span class="bl">standalone briefings</span>
+  └── Specola_*.docx    <span class="bl">or .pdf or .epub</span></div>
     </div>
 </section>
 
@@ -1699,51 +932,19 @@
     <div class="install-inner">
         <div class="reveal">
             <div class="section-label">Get started</div>
-            <h2 class="section-title">From clone to first<br>briefing in minutes</h2>
+            <h2 class="section-title">Three commands to<br>your first briefing</h2>
         </div>
         <div class="install-code reveal">
-<span class="comment"># Clone the repository</span>
+<span class="comment"># Clone and build</span>
 <span class="cmd">git clone</span> https://github.com/amargiovanni/specola.git
 <span class="cmd">cd</span> specola
-
-<span class="comment"># Build the app</span>
 <span class="cmd">xcodebuild</span> <span class="flag">-project</span> Specola.xcodeproj <span class="flag">-scheme</span> Specola <span class="flag">-configuration</span> Release <span class="flag">-derivedDataPath</span> build
 
-<span class="comment"># Install to Applications</span>
+<span class="comment"># Install</span>
 <span class="cmd">cp -R</span> build/Build/Products/Release/Specola.app /Applications/
         </div>
-
-        <div class="install-steps reveal reveal-stagger">
-            <div class="install-step">
-                <div class="install-step-num">FIRST LAUNCH</div>
-                <h4>Auto-setup</h4>
-                <p>
-                    The Python engine extracts to Application Support and creates
-                    its own virtual environment. No manual pip install needed.
-                </p>
-            </div>
-            <div class="install-step">
-                <div class="install-step-num">CONFIGURE</div>
-                <h4>Import &amp; personalize</h4>
-                <p>
-                    Drop your OPML file in the Feeds tab. Write your professional
-                    profile in the Profile tab. Pick your language and time window.
-                </p>
-            </div>
-            <div class="install-step">
-                <div class="install-step-num">SCHEDULE</div>
-                <h4>Set your time</h4>
-                <p>
-                    Choose when you want your briefing (default: 07:00).
-                    Enable auto-generate and optionally add Specola to login items.
-                </p>
-            </div>
-        </div>
-
         <p class="install-note reveal">
-            The only external dependency is <code style="color:var(--accent);background:var(--accent-soft);padding:0.15rem 0.4rem;border-radius:3px;">claude</code> in your PATH.
-            Everything else &mdash; Python packages, virtual environment, output directory &mdash;
-            is handled automatically on first launch.
+            The Python engine is bundled inside the app and automatically set up on first launch &mdash; no manual Python configuration needed. Choose your LLM provider in Settings: Claude Code CLI (default), OpenAI Codex CLI, or LM Studio for local models. Import your OPML feeds, write your profile, and hit &ldquo;Genera ora&rdquo;. Your first briefing is minutes away.
         </p>
         <div style="margin-top: 2.5rem;" class="reveal">
             <a href="https://github.com/amargiovanni/specola" class="btn-primary">
@@ -1754,125 +955,11 @@
     </div>
 </section>
 
-<!-- FAQ -->
-<section class="faq" id="faq">
-    <div class="faq-inner">
-        <div class="reveal">
-            <div class="section-label">Common questions</div>
-            <h2 class="section-title">FAQ</h2>
-        </div>
-        <div class="faq-list reveal">
-            <div class="faq-item">
-                <button class="faq-question">
-                    Does Specola send my data to any server?
-                    <span class="faq-icon">+</span>
-                </button>
-                <div class="faq-answer">
-                    <p>
-                        No. Everything runs locally on your Mac. Your feeds are fetched directly,
-                        your profile stays on disk, and the analysis happens through the Claude Code
-                        CLI which runs as a local subprocess. There is no Specola server, no telemetry,
-                        and no third-party data sharing.
-                    </p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">
-                    Do I need an Anthropic API key?
-                    <span class="faq-icon">+</span>
-                </button>
-                <div class="faq-answer">
-                    <p>
-                        No API key is needed. Specola uses the Claude Code CLI, which manages
-                        authentication through its own session. Just make sure <code>claude</code>
-                        is installed and in your PATH.
-                    </p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">
-                    What happens if Claude is unavailable?
-                    <span class="faq-icon">+</span>
-                </button>
-                <div class="faq-answer">
-                    <p>
-                        Specola degrades gracefully. If the Claude CLI is unreachable or times out,
-                        the app still generates a DOCX document containing the raw feed content,
-                        with a red warning banner reading "Analisi non disponibile."
-                        You always get a briefing &mdash; the AI analysis is an enhancement, not a hard dependency.
-                    </p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">
-                    Can I customize the briefing structure?
-                    <span class="faq-icon">+</span>
-                </button>
-                <div class="faq-answer">
-                    <p>
-                        The five-section structure (Da sapere oggi, Richiede attenzione,
-                        Per area tematica, Da leggere con calma, Spunti) is the default format,
-                        optimized for professional knowledge workers. Your professional profile
-                        influences the content and prioritization within each section.
-                    </p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">
-                    How many feeds can Specola handle?
-                    <span class="faq-icon">+</span>
-                </button>
-                <div class="faq-answer">
-                    <p>
-                        Specola has been tested with 200+ feeds and handles them comfortably
-                        thanks to its concurrent 20-thread fetching pool. Failed or slow feeds
-                        are skipped without blocking the rest. The practical limit depends on
-                        your network speed and the Claude context window.
-                    </p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">
-                    What if my Mac is asleep at the scheduled time?
-                    <span class="faq-icon">+</span>
-                </button>
-                <div class="faq-answer">
-                    <p>
-                        Specola listens for NSWorkspace wake notifications. When your Mac wakes up,
-                        it checks whether a scheduled briefing was missed and runs it immediately.
-                        No cron jobs, no launchd agents &mdash; it's all handled internally.
-                    </p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">
-                    Is Specola open source?
-                    <span class="faq-icon">+</span>
-                </button>
-                <div class="faq-answer">
-                    <p>
-                        Yes. Specola is released under the MIT license. You can fork it,
-                        modify it, and use it freely. Contributions are welcome on GitHub.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- FOOTER -->
 <footer>
-    <div class="footer-inner">
-        <div class="footer-brand">
-            <div class="nav-diamond"></div>
-            <span>Specola</span>
-        </div>
-        <div class="footer-links">
-            <a href="https://github.com/amargiovanni/specola">GitHub</a>
-            <a href="https://claude.ai/claude-code">Claude Code</a>
-            <p>MIT License &mdash; Built with Swift, Python &amp; Claude</p>
-        </div>
-    </div>
+    <p>
+        <a href="https://github.com/amargiovanni/specola">Specola</a> &mdash; MIT License &mdash; Built with Swift, Python &amp; <a href="https://claude.ai/claude-code">Claude Code</a>
+    </p>
 </footer>
 
 <script>
@@ -1885,9 +972,10 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 // Nav shrink on scroll
+let lastScroll = 0;
 window.addEventListener('scroll', () => {
     const nav = document.querySelector('nav');
     if (window.scrollY > 100) {
@@ -1895,34 +983,6 @@ window.addEventListener('scroll', () => {
     } else {
         nav.style.padding = '1.25rem 2rem';
     }
-});
-
-// Mobile nav toggle
-document.getElementById('navToggle').addEventListener('click', () => {
-    document.getElementById('navLinks').classList.toggle('mobile-open');
-});
-
-// Close mobile nav on link click
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        document.getElementById('navLinks').classList.remove('mobile-open');
-    });
-});
-
-// FAQ accordion
-document.querySelectorAll('.faq-question').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const item = btn.parentElement;
-        const wasOpen = item.classList.contains('open');
-
-        // Close all
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-
-        // Toggle clicked
-        if (!wasOpen) {
-            item.classList.add('open');
-        }
-    });
 });
 </script>
 
