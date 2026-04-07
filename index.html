@@ -41,7 +41,7 @@
         body {
             font-family: 'DM Sans', sans-serif;
             background: var(--canvas);
-            color: var(--ink);
+            color: var(--muted);
             line-height: 1.7;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
@@ -200,7 +200,7 @@
         }
 
         .nav-links a:hover {
-            color: var(--ink);
+            color: var(--gold-dark);
         }
 
         .nav-right {
@@ -299,19 +299,6 @@
             padding: 0.7rem 1.6rem;
         }
 
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .nav-right .nav-cta {
-                display: none;
-            }
-
-            .nav-hamburger {
-                display: flex;
-            }
-        }
 
 
         /* ═══════════════════════════════════════════════
@@ -374,7 +361,7 @@
 
         .hero-subtitle {
             font-size: 1.15rem;
-            font-weight: 300;
+            font-weight: 400;
             color: var(--muted);
             max-width: 560px;
             margin: 0 auto 2.5rem;
@@ -403,7 +390,7 @@
             color: #ffffff;
             font-size: 0.95rem;
             font-weight: 500;
-            border-radius: 8px;
+            border-radius: 6px;
             border: none;
             cursor: pointer;
             transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
@@ -424,7 +411,7 @@
             color: var(--ink);
             font-size: 0.95rem;
             font-weight: 500;
-            border-radius: 8px;
+            border-radius: 6px;
             border: 1px solid var(--border);
             cursor: pointer;
             transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
@@ -458,35 +445,6 @@
             user-select: none;
         }
 
-        @media (max-width: 768px) {
-            .hero {
-                padding: 7rem 1.25rem 3rem;
-                min-height: 90vh;
-            }
-
-            .hero-headline {
-                font-size: clamp(2rem, 8vw, 2.8rem);
-            }
-
-            .hero-subtitle {
-                font-size: 1.05rem;
-            }
-
-            .hero-ctas {
-                flex-direction: column;
-            }
-
-            .btn-primary,
-            .btn-secondary {
-                width: 100%;
-                justify-content: center;
-                max-width: 300px;
-            }
-
-            .hero-stats {
-                font-size: 0.75rem;
-            }
-        }
 
 
         /* ═══════════════════════════════════════════════
@@ -1079,10 +1037,10 @@
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .nav-hamburger { display: block; }
+            .nav-hamburger { display: flex; }
 
             .hero { padding: 7rem 1.5rem 3rem; min-height: auto; }
-            .hero h1 { font-size: 2.2rem; }
+            .hero h1, .hero-headline { font-size: 2.2rem; }
             .hero-subtitle { font-size: 1rem; }
 
             .flow-steps { grid-template-columns: 1fr; }
@@ -1121,7 +1079,7 @@
         </ul>
 
         <div class="nav-right">
-            <a href="https://github.com/nicobailon/specola" class="nav-cta" target="_blank" rel="noopener">
+            <a href="https://github.com/amargiovanni/specola" class="nav-cta" target="_blank" rel="noopener">
                 Scarica su GitHub
             </a>
             <button class="nav-hamburger" id="hamburger" aria-label="Menu di navigazione" aria-expanded="false">
@@ -1138,7 +1096,7 @@
         <a href="#funzionalita" class="nav-mobile-link">Funzionalit&agrave;</a>
         <a href="#per-chi-e" class="nav-mobile-link">Per chi &egrave;</a>
         <a href="#faq" class="nav-mobile-link">FAQ</a>
-        <a href="https://github.com/nicobailon/specola" class="nav-cta" target="_blank" rel="noopener">
+        <a href="https://github.com/amargiovanni/specola" class="nav-cta" target="_blank" rel="noopener">
             Scarica su GitHub
         </a>
     </div>
@@ -1150,7 +1108,7 @@
             <h1 class="hero-headline">Il tuo osservatorio quotidiano<br>su ci&ograve; che conta</h1>
             <p class="hero-subtitle">Specola trasforma centinaia di fonti RSS in un briefing intelligente, ogni mattina. Analisi AI, zero rumore.</p>
             <div class="hero-ctas">
-                <a href="https://github.com/nicobailon/specola" class="btn-primary" target="_blank" rel="noopener">
+                <a href="https://github.com/amargiovanni/specola" class="btn-primary" target="_blank" rel="noopener">
                     Scarica Specola
                 </a>
                 <a href="#come-funziona" class="btn-secondary">
@@ -1330,7 +1288,7 @@
     </section>
 
     <!-- PER CHI E -->
-    <section class="personas" id="per-chi">
+    <section class="personas" id="per-chi-e">
         <div class="personas-inner">
             <div class="reveal">
                 <h2 class="section-title"><em>Specola &egrave; per chi...</em></h2>
