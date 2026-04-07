@@ -487,6 +487,213 @@
                 font-size: 0.75rem;
             }
         }
+
+
+        /* ═══════════════════════════════════════════════
+           TASK 4 — Come funziona (3-step flow)
+           ═══════════════════════════════════════════════ */
+
+        /* === COME FUNZIONA === */
+        .flow {
+            padding: 6rem 2rem;
+            background: var(--cream);
+        }
+
+        .flow-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .flow-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 3rem;
+        }
+
+        .flow-step {
+            background: var(--paper);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+        }
+
+        .flow-step-num {
+            font-family: 'Instrument Serif', serif;
+            font-size: 3rem;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .flow-step-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--dim);
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-step h3 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-step p {
+            font-size: 0.92rem;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+
+        /* ═══════════════════════════════════════════════
+           TASK 5 — Il briefing (Preview)
+           ═══════════════════════════════════════════════ */
+
+        /* === IL BRIEFING === */
+        .preview {
+            padding: 6rem 2rem;
+            background: var(--canvas);
+        }
+
+        .preview-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .preview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .briefing-sections {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .briefing-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 0.75rem 0;
+        }
+
+        .briefing-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--gold);
+            margin-top: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .briefing-item strong {
+            display: block;
+            color: var(--ink);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.15rem;
+        }
+
+        .briefing-item span {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* DOCX mockup */
+        .docx-mockup {
+            background: var(--paper);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            transform: perspective(800px) rotateY(-2deg);
+            transition: transform 0.5s ease-out;
+            border-top: 4px solid var(--gold);
+        }
+
+        .docx-mockup:hover {
+            transform: perspective(800px) rotateY(0deg);
+        }
+
+        .docx-header {
+            padding: 0.75rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.65rem;
+            color: var(--dim);
+        }
+
+        .docx-header .diamond {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: var(--gold);
+            transform: rotate(45deg);
+            margin-right: 6px;
+        }
+
+        .docx-body {
+            padding: 2rem 2.5rem;
+        }
+
+        .docx-body h2 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.3rem;
+            color: var(--ink);
+            border-bottom: 3px solid var(--gold);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .docx-body h3 {
+            font-size: 0.85rem;
+            color: var(--ink);
+            border-left: 3px solid var(--gold);
+            padding-left: 0.75rem;
+            margin: 1.25rem 0 0.5rem;
+            font-weight: 600;
+        }
+
+        .docx-body p {
+            font-size: 0.78rem;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+        }
+
+        .docx-body a {
+            color: var(--gold-dark);
+            text-decoration: underline;
+            font-size: 0.78rem;
+        }
+
+        .docx-body .tag {
+            display: inline-block;
+            background: var(--cream);
+            color: var(--ink);
+            font-size: 0.65rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+
+        .docx-fade {
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, var(--paper));
+            margin-top: -60px;
+            position: relative;
+        }
     </style>
 </head>
 <body>
@@ -544,6 +751,101 @@
             </div>
             <div class="hero-stats">
                 200+ fonti <span>&middot;</span> 3 formati <span>&middot;</span> 3 minuti al giorno
+            </div>
+        </div>
+    </section>
+
+    <!-- COME FUNZIONA -->
+    <section class="flow" id="come-funziona">
+        <div class="flow-inner">
+            <div class="reveal">
+                <h2 class="section-title">Tre passaggi, zero sforzo</h2>
+                <p class="section-subtitle">Configura una volta, ricevi ogni giorno. Specola gira silenziosamente nel menubar e gestisce tutto.</p>
+            </div>
+            <div class="flow-steps">
+                <div class="flow-step reveal">
+                    <div class="flow-step-num">01</div>
+                    <div class="flow-step-label">Raccogli</div>
+                    <h3>RSS in parallelo</h3>
+                    <p>Parsing OPML automatico, 200+ feed concorrenti su 20 thread paralleli. Tu importi le fonti, Specola fa il resto.</p>
+                </div>
+                <div class="flow-step reveal reveal-d1">
+                    <div class="flow-step-num">02</div>
+                    <div class="flow-step-label">Analizza</div>
+                    <h3>Pre-filtro + dual-model AI</h3>
+                    <p>Pre-filtro locale intelligente che taglia il 60-75% del rumore. Poi analisi dual-model: veloce per categoria, approfondita per la sintesi.</p>
+                </div>
+                <div class="flow-step reveal reveal-d2">
+                    <div class="flow-step-num">03</div>
+                    <div class="flow-step-label">Ricevi</div>
+                    <h3>Il formato che preferisci</h3>
+                    <p>Scegli il formato &mdash; DOCX, PDF o EPUB. Ogni briefing archiviato nel portale HTML consultabile.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IL BRIEFING -->
+    <section class="preview" id="briefing">
+        <div class="preview-inner">
+            <div class="reveal">
+                <h2 class="section-title"><em>Non un riassunto. Un briefing di intelligence.</em></h2>
+            </div>
+            <div class="preview-grid">
+                <div class="briefing-sections reveal">
+                    <div class="briefing-item">
+                        <div class="briefing-dot"></div>
+                        <div>
+                            <strong>Da sapere oggi</strong>
+                            <span>Le novit&agrave; chiave della giornata</span>
+                        </div>
+                    </div>
+                    <div class="briefing-item">
+                        <div class="briefing-dot"></div>
+                        <div>
+                            <strong>Richiede attenzione</strong>
+                            <span>Sviluppi che impattano il tuo lavoro</span>
+                        </div>
+                    </div>
+                    <div class="briefing-item">
+                        <div class="briefing-dot"></div>
+                        <div>
+                            <strong>Per area tematica</strong>
+                            <span>Analisi approfondita per argomento</span>
+                        </div>
+                    </div>
+                    <div class="briefing-item">
+                        <div class="briefing-dot"></div>
+                        <div>
+                            <strong>Da leggere con calma</strong>
+                            <span>Articoli lunghi selezionati per te</span>
+                        </div>
+                    </div>
+                    <div class="briefing-item">
+                        <div class="briefing-dot"></div>
+                        <div>
+                            <strong>Spunti</strong>
+                            <span>Idee, connessioni, provocazioni</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="reveal reveal-d1">
+                    <div class="docx-mockup">
+                        <div class="docx-header">
+                            <span><span class="diamond"></span> SPECOLA</span>
+                            <span>2026-04-07</span>
+                        </div>
+                        <div class="docx-body">
+                            <h2>Specola &mdash; Briefing del 7 aprile 2026</h2>
+                            <h3>Da sapere oggi</h3>
+                            <p><strong>L'AI Act entra nella fase esecutiva.</strong> Da oggi le aziende che operano nell'UE devono conformarsi ai requisiti di trasparenza per i sistemi ad alto rischio. Per chi sviluppa SaaS B2B, questo significa audit trail obbligatori e documentazione tecnica verificabile. <a href="#">(Il Sole 24 Ore)</a></p>
+                            <p><strong>GitHub lancia Copilot Workspace in GA.</strong> L'ambiente di sviluppo AI-first esce dalla beta. Integra planning, coding e testing in un flusso unico. Rilevante per team che stanno valutando l'adozione di AI coding tools. <a href="#">(GitHub Blog)</a></p>
+                            <h3>Richiede attenzione</h3>
+                            <p><span class="tag">AZIONE</span> La scadenza PSD3 per l'adeguamento delle API di pagamento si avvicina. Se il tuo prodotto gestisce transazioni B2B nell'eurozona, verifica la compliance entro il 15 aprile. <a href="#">(EBA)</a></p>
+                        </div>
+                        <div class="docx-fade"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
