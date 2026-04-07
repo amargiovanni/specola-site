@@ -882,6 +882,194 @@
             font-weight: 500;
             background: rgba(196,168,130,0.04);
         }
+
+        /* === ARCHITETTURA === */
+        .arch {
+            padding: 6rem 2rem;
+            background: var(--canvas);
+        }
+
+        .arch-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .arch-diagram {
+            margin-top: 3rem;
+            background: var(--paper);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            line-height: 1.9;
+            color: var(--muted);
+            overflow-x: auto;
+            white-space: pre;
+        }
+
+        .arch-diagram .hl { color: var(--gold); }
+        .arch-diagram .bl { color: var(--gold-dark); }
+        .arch-diagram .wh { color: var(--ink); font-weight: 500; }
+
+        /* === INSTALLAZIONE === */
+        .install {
+            padding: 6rem 2rem;
+            background: var(--cream);
+        }
+
+        .install-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .install-code {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 2rem 2.5rem;
+            text-align: left;
+            margin: 2.5rem 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            line-height: 2;
+            color: #e8e0d6;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+
+        .install-code .comment { color: #6b6155; }
+        .install-code .cmd { color: #fafaf9; }
+        .install-code .flag { color: #c4a882; }
+
+        .install-note {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 480px;
+            margin: 0 auto 2rem;
+        }
+
+        .install-link {
+            color: var(--gold-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease-out;
+        }
+
+        .install-link:hover { color: var(--ink); }
+        .install-link::after { content: ' \2192'; }
+
+        /* === FAQ === */
+        .faq {
+            padding: 6rem 2rem;
+            background: var(--canvas);
+        }
+
+        .faq-inner {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .faq-list {
+            margin-top: 3rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 1.25rem 0;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink);
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .faq-question:hover { color: var(--gold-dark); }
+
+        .faq-chevron {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            transition: transform 0.3s ease-out;
+            color: var(--dim);
+        }
+
+        .faq-item.open .faq-chevron {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .faq-answer-inner {
+            padding: 0 0 1.25rem;
+            font-size: 0.92rem;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background: #1a1a1a;
+            padding: 3.5rem 2rem;
+            text-align: center;
+        }
+
+        .footer-cta {
+            display: inline-block;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 0.85rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease-out;
+            margin-bottom: 2rem;
+        }
+
+        .footer-cta:hover {
+            background: var(--gold);
+            color: #1a1a1a;
+        }
+
+        .footer-links {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #e8e0d6;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease-out;
+        }
+
+        .footer-links a:hover { color: var(--gold); }
+
+        .footer-links span {
+            color: #6b6155;
+            margin: 0 0.75rem;
+        }
+
+        .footer-credit {
+            font-size: 0.8rem;
+            color: #6b6155;
+        }
     </style>
 </head>
 <body>
@@ -1204,7 +1392,139 @@
         </div>
     </section>
 
-    <!-- Remaining sections -->
+    <!-- ARCHITETTURA -->
+    <section class="arch" id="architettura">
+        <div class="arch-inner">
+            <div class="reveal">
+                <h2 class="section-title">Sotto il cofano</h2>
+                <p class="section-subtitle">Tre componenti, un contratto. L'app Swift gestisce UI e scheduling. Il motore Python fa analisi e rendering. Il widget WidgetKit mostra i punti chiave nel Centro Notifiche.</p>
+            </div>
+            <div class="arch-diagram reveal"><span class="wh">Swift App</span>                              <span class="wh">Python Engine</span>
+
+  MenuBarExtra          <span class="hl">&#x2500;&#x2500;&#x2500;args&#x2500;&#x2500;&#x25B6;</span>      parse_opml()
+  Popover                                 fetch_feeds()  <span class="bl">20 threads</span>
+  Settings              <span class="hl">&#x25C0;&#x2500;&#x2500;JSON&#x2500;&#x2500;</span>      build_prompt()
+  Scheduler  <span class="bl">60s timer</span>                  analyze()  <span class="bl">dual-model: fast + capable</span>
+  Notifications                           generate_html()  <span class="bl">sempre</span>
+                                          generate_docx() <span class="bl">o</span> pdf() <span class="bl">o</span> epub()
+  <span class="wh">Widget Extension</span>                      portal_index()  <span class="bl">archivio statico</span>
+  WidgetKit  <span class="bl">systemMedium/Large</span>
+  <span class="hl">&#x25C0;&#x2500;&#x2500; App Group &#x2500;&#x2500;&#x25B6;</span>  widget_data.json
+
+  <span class="hl">~/Library/Application Support/Specola/</span>
+  &#x251C;&#x2500;&#x2500; engine/.venv/     <span class="bl">creato automaticamente al primo avvio</span>
+  &#x251C;&#x2500;&#x2500; Feeds.opml        <span class="bl">copia dell'OPML utente</span>
+  &#x251C;&#x2500;&#x2500; profile.md        <span class="bl">profilo professionale</span>
+  &#x2514;&#x2500;&#x2500; history.json      <span class="bl">ultimi 30 briefing</span>
+
+  <span class="hl">~/Documents/Specola/</span>
+  &#x251C;&#x2500;&#x2500; index.html        <span class="bl">portale archivio navigabile</span>
+  &#x251C;&#x2500;&#x2500; Specola_*.html    <span class="bl">briefing standalone</span>
+  &#x2514;&#x2500;&#x2500; Specola_*.docx    <span class="bl">o .pdf o .epub</span></div>
+        </div>
+    </section>
+
+    <!-- INSTALLAZIONE -->
+    <section class="install" id="installa">
+        <div class="install-inner">
+            <div class="reveal">
+                <h2 class="section-title">Tre comandi per il<br>tuo primo briefing</h2>
+            </div>
+            <div class="install-code reveal">
+<span class="comment"># Clona e compila</span>
+<span class="cmd">git clone</span> https://github.com/amargiovanni/specola.git
+<span class="cmd">cd</span> specola
+<span class="cmd">xcodebuild</span> <span class="flag">-project</span> Specola.xcodeproj <span class="flag">-scheme</span> Specola <span class="flag">-configuration</span> Release <span class="flag">-derivedDataPath</span> build
+
+<span class="comment"># Installa</span>
+<span class="cmd">cp -R</span> build/Build/Products/Release/Specola.app /Applications/
+            </div>
+            <p class="install-note reveal">
+                Il motore Python &egrave; incluso nell'app e si configura automaticamente al primo avvio. Scegli il provider AI nelle impostazioni, importa i feed OPML, scrivi il tuo profilo e premi &ldquo;Genera ora&rdquo;.
+            </p>
+            <div class="reveal">
+                <a href="https://github.com/amargiovanni/specola" class="install-link">Vedi su GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <div class="faq-inner">
+            <div class="reveal">
+                <h2 class="section-title">Domande frequenti</h2>
+            </div>
+            <div class="faq-list reveal">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Serve una chiave API?
+                        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer"><div class="faq-answer-inner">Dipende dal provider. Con Claude Code CLI e LM Studio non serve. Con OpenAI s&igrave;, ma la configuri una sola volta nel setup guidato.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Funziona offline?
+                        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer"><div class="faq-answer-inner">S&igrave;, con LM Studio. Scarichi il modello una volta e Specola analizza tutto in locale, senza mai inviare dati fuori dal tuo Mac.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Quanto costa usarlo?
+                        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer"><div class="faq-answer-inner">Specola &egrave; gratuito e open source (MIT). Paghi solo l'eventuale uso API del provider AI che scegli. Il pre-filtro riduce i costi del 60-75%.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Su quali Mac funziona?
+                        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer"><div class="faq-answer-inner">Qualsiasi Mac con macOS 14 (Sonoma) o successivo. Apple Silicon raccomandato per LM Studio locale.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Posso personalizzare le fonti?
+                        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer"><div class="faq-answer-inner">S&igrave;. Importi un file OPML con le tue fonti RSS, oppure le aggiungi una alla volta. Puoi organizzarle per categoria.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        In che formati genera il briefing?
+                        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer"><div class="faq-answer-inner">DOCX, PDF ed EPUB. Ogni briefing &egrave; anche disponibile nel portale HTML integrato per la consultazione via browser.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Come scelgo il modello AI?
+                        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer"><div class="faq-answer-inner">Dalle impostazioni: Claude (via CLI), OpenAI (con API key), o qualsiasi modello locale via LM Studio. Puoi cambiare in qualsiasi momento.</div></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        I miei dati dove vanno?
+                        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer"><div class="faq-answer-inner">Restano sul tuo Mac. Feed, briefing e configurazione sono in ~/Library/Application&nbsp;Support/Specola. Nessun cloud, nessun tracking.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <a href="https://github.com/amargiovanni/specola" class="footer-cta">Prova Specola</a>
+        <div class="footer-links">
+            <a href="https://github.com/amargiovanni/specola">GitHub</a>
+            <span>&middot;</span>
+            <a href="https://github.com/amargiovanni/specola/blob/main/LICENSE">MIT License</a>
+        </div>
+        <p class="footer-credit">Fatto con Swift, Python e Claude Code</p>
+    </footer>
 
     <script>
         // ═══ Nav scroll behavior ═══
@@ -1256,7 +1576,24 @@
             revealObserver.observe(el);
         });
 
-        // JS will be added later
+        // ═══ FAQ accordion ═══
+        function toggleFaq(btn) {
+            const item = btn.parentElement;
+            const answer = item.querySelector('.faq-answer');
+            const isOpen = item.classList.contains('open');
+
+            // Close all open items
+            document.querySelectorAll('.faq-item.open').forEach(function(openItem) {
+                openItem.classList.remove('open');
+                openItem.querySelector('.faq-answer').style.maxHeight = null;
+            });
+
+            // Toggle clicked item
+            if (!isOpen) {
+                item.classList.add('open');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            }
+        }
     </script>
 </body>
 </html>
