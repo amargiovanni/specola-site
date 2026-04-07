@@ -1070,6 +1070,38 @@
             font-size: 0.8rem;
             color: #6b6155;
         }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 1024px) {
+            .personas-grid { grid-template-columns: 1fr 1fr; }
+            .personas-grid .persona:last-child { grid-column: 1 / -1; max-width: 400px; margin: 0 auto; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-hamburger { display: block; }
+
+            .hero { padding: 7rem 1.5rem 3rem; min-height: auto; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero-subtitle { font-size: 1rem; }
+
+            .flow-steps { grid-template-columns: 1fr; }
+            .preview-grid { grid-template-columns: 1fr; }
+            .docx-mockup { transform: none; }
+            .docx-mockup:hover { transform: none; }
+            .features-grid { grid-template-columns: 1fr; }
+            .personas-grid { grid-template-columns: 1fr; }
+            .personas-grid .persona:last-child { max-width: none; }
+
+            .section-title { font-size: 1.75rem; }
+            .section-subtitle { font-size: 0.95rem; }
+
+            .comparison-table { font-size: 0.8rem; }
+            .comparison-table thead th,
+            .comparison-table tbody td { padding: 0.75rem; }
+
+            .arch-diagram { font-size: 0.68rem; padding: 1.5rem; }
+        }
     </style>
 </head>
 <body>
@@ -1568,7 +1600,7 @@
                 }
             });
         }, {
-            threshold: 0.1,
+            threshold: 0.15,
             rootMargin: '0px 0px -40px 0px'
         });
 
